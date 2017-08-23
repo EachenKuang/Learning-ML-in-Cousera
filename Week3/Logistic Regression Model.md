@@ -32,3 +32,36 @@ If our correct answer 'y' is 0, then the cost function will be 0 if our hypothes
 If our correct answer 'y' is 1, then the cost function will be 0 if our hypothesis function outputs 1. If our hypothesis approaches 0, then the cost function will approach infinity.
 
 Note that writing the cost function in this way guarantees that J(θ) is convex for logistic regression.
+
+## Simplified Cost Function and Gradient Descent
+
+We can compress our cost function's two conditional cases into one case:
+
+> <img src="https://latex.codecogs.com/gif.latex?Cost(h_\theta(x),y)=-ylog(h_\theta(x))-(1-y)log(1-h_\theta(x))" />
+
+Notice that when y is equal to 1, then the second term (1−y)log(1−hθ(x)) will be zero and will not affect the result. If y is equal to 0, then the first term −ylog(hθ(x)) will be zero and will not affect the result.
+
+We can fully write out our entire cost function as follows:
+
+>
+
+A vectorized implementation is:
+
+> <img src="https://latex.codecogs.com/gif.latex?h=g(X\theta)" />  
+> <p>
+> <img src="https://latex.codecogs.com/gif.latex?J(\theta)=\frac{1}{m}\dot(-y^Tlog(h)-(1-y)^Tlog(1-h))" />
+
+### Gradient Descent
+Remember that the general form of gradient descent is:
+
+> Repeat{
+> 
+> <img src="https://latex.codecogs.com/gif.latex?\theta_j:=\theta_j-\frac{\alpha}{m}\sum_{i=1}^m(h_\theta(x^{(i)})-y^{(i)})x_j^{(i)}" />
+> 
+> }
+
+Notice that this algorithm is identical to the one we used in linear regression. We still have to simultaneously update all values in theta.
+
+A vectorized implementation is:
+
+<img src="https://latex.codecogs.com/gif.latex?\theta:=\theta-\frac{\alpha}{m}X^T(g(X\theta)-\vec{y})" />
