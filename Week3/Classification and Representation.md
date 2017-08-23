@@ -24,10 +24,40 @@ The function g(z), shown here, maps any real number to the (0, 1) interval, maki
 
 hθ(x) will give us the probability that our output is 1. For example, hθ(x)=0.7 gives us a probability of 70% that our output is 1. Our probability that our prediction is 0 is just the complement of our probability that it is 1 (e.g. if probability that it is 1 is 70%, then the probability that it is 0 is 30%).
   
-*****************************************************************************************
+* * *
 
 <img src="https://latex.codecogs.com/gif.latex?h_\theta(x)=P(y=1|x;\theta)=1-P(y=0|x;\theta)" />  
 <img src="https://latex.codecogs.com/gif.latex?P(y=1|x;\theta)+P(y=0|x;\theta)=1" />   
 
-*****************************************************************************************
+* * *
+
+## Decision Boundary
+In order to get our discrete 0 or 1 classification, we can translate the output of the hypothesis function as follows:
+
+* * *
+
+<img src="https://latex.codecogs.com/gif.latex?h_\theta(x)\geq0.5{\rightarrow}y=1"/>  
+<img src="https://latex.codecogs.com/gif.latex?h_\theta(x)<0.5{\rightarrow}y=1"/>  
+
+* * *
+
+The way our logistic function g behaves is that when its input is greater than or equal to zero, its output is greater than or equal to 0.5:  
+
+* * *
+
+<img src="https://latex.codecogs.com/gif.latex?g(z)\geq0.5" /> 
+<img src="https://latex.codecogs.com/gif.latex?when\:z\geq0" />
+
+* * *
+
+
+Remember.
+
+* * *
+
+<img src="https://latex.codecogs.com/gif.latex?z=0,e^0=1{\Rightarrow}g(z)=1/2" /> 
+<img src="https://latex.codecogs.com/gif.latex?z{\rightarrow}{\infty},e^{-\infty}{\rightarrow}0{\Rightarrow}g(z)=1" /> 
+<img src="https://latex.codecogs.com/gif.latex?z{\rightarrow}{-\infty},e^{\infty}{\rightarrow}{\infty}{\Rightarrow}g(z)=0" /> 
+
+* * *
 
