@@ -79,3 +79,23 @@ To add in regularization, the equation is the same as our original, except that 
 L is a matrix with 0 at the top left and 1's down the diagonal, with 0's everywhere else. It should have dimension (n+1)×(n+1). Intuitively, this is the identity matrix (though we are not including x0), multiplied with a single real number λ.
 
 Recall that if m < n, then XTX is non-invertible. However, when we add the term λ⋅L, then XTX + λ⋅L becomes invertible.
+
+## Regularized Logistic Regression
+
+We can regularize logistic regression in a similar way that we regularize linear regression. As a result, we can avoid overfitting. The following image shows how the regularized function, displayed by the pink line, is less likely to overfit than the non-regularized function represented by the blue line:
+
+<img src="https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/Od9mobDaEeaCrQqTpeD5ng_4f5e9c71d1aa285c1152ed4262f019c1_Screenshot-2016-11-22-09.31.21.png?expiry=1503705600000&amp;hmac=n4z-c9_38jdKEb705VoWy9NI5TpZlKTcF9NOg6e2tpE" alt="" data-asset-id="Od9mobDaEeaCrQqTpeD5ng">
+
+### Cost Function
+
+Recall that our cost function for logistic regression was:
+
+> <img src="https://latex.codecogs.com/gif.latex?J(\theta)=-\frac{1}{m}\sum_{i=1}^m[y^{(i)}log(h_\theta(x^{(i)}))-(1-y^{(i)})log(1-h_\theta(x^{(i)}))]" />
+
+We can regularize this equation by adding a term to the end:
+
+> <img src="https://latex.codecogs.com/gif.latex?J(\theta)=-\frac{1}{m}\sum_{i=1}^m[y^{(i)}log(h_\theta(x^{(i)}))-(1-y^{(i)})log(1-h_\theta(x^{(i)}))]+\frac{\lambda}{2m}\sum_{j=1}^n\theta_j^2" />
+
+The second sum,<img src="https://latex.codecogs.com/gif.latex?\sum_{j=1}^n\theta_j^2" /> **means to explicitly exclude** the bias term, <img src="https://latex.codecogs.com/gif.latex?\theta_0" />. I.e. the θ vector is indexed from 0 to n (holding n+1 values, θ0 through θn), and this sum explicitly skips θ0, by running from 1 to n, skipping 0. Thus, when computing the equation, we should continuously update the two following equations:
+
+<img src="https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/dfHLC70SEea4MxKdJPaTxA_306de28804a7467f7d84da0fe3ee9c7b_Screen-Shot-2016-12-07-at-10.49.02-PM.png?expiry=1503705600000&amp;hmac=FBrRJ1QDiMUO0ATAFm0c-WtexTOx6EVF7dMI0ER9i3Q" alt="" data-asset-id="dfHLC70SEea4MxKdJPaTxA">
