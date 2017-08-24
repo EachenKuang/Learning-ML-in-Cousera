@@ -96,6 +96,6 @@ We can regularize this equation by adding a term to the end:
 
 > <img src="https://latex.codecogs.com/gif.latex?J(\theta)=-\frac{1}{m}\sum_{i=1}^m[y^{(i)}log(h_\theta(x^{(i)}))-(1-y^{(i)})log(1-h_\theta(x^{(i)}))]+\frac{\lambda}{2m}\sum_{j=1}^n\theta_j^2" />
 
-The second sum,<img src="https://latex.codecogs.com/gif.latex?\sum_{j=1}^n\theta_j^2" /> **means to explicitly exclude** the bias term, <img src="https://latex.codecogs.com/gif.latex?\theta_0" />. I.e. the θ vector is indexed from 0 to n (holding n+1 values, θ0 through θn), and this sum explicitly skips θ0, by running from 1 to n, skipping 0. Thus, when computing the equation, we should continuously update the two following equations:
+The second sum,<img src="https://latex.codecogs.com/gif.latex?\sum_{j=1}^n\theta_j^2} " /> **means to explicitly exclude** the bias term, <img src="https://latex.codecogs.com/gif.latex?\theta_0" />. I.e. the θ vector is indexed from 0 to n (holding n+1 values, θ0 through θn), and this sum explicitly skips θ0, by running from 1 to n, skipping 0. Thus, when computing the equation, we should continuously update the two following equations:
 
 <img src="https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/dfHLC70SEea4MxKdJPaTxA_306de28804a7467f7d84da0fe3ee9c7b_Screen-Shot-2016-12-07-at-10.49.02-PM.png?expiry=1503705600000&amp;hmac=FBrRJ1QDiMUO0ATAFm0c-WtexTOx6EVF7dMI0ER9i3Q" alt="" data-asset-id="dfHLC70SEea4MxKdJPaTxA">
