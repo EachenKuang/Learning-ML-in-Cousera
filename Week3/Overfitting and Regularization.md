@@ -44,3 +44,38 @@ We could also regularize all of our theta parameters in a single summation as:
 The λ, or lambda, is the **regularization parameter**. It determines how much the costs of our theta parameters are inflated.
 
 Using the above cost function with the extra summation, we can smooth the output of our hypothesis function to reduce overfitting. If lambda is chosen to be too large, it may smooth out the function too much and cause underfitting. Hence, what would happen if **λ=0** or is too small ?
+
+## Regularized Linear Regression
+
+We can apply regularization to both linear regression and logistic regression. We will approach linear regression first.
+
+### Gradient Descent
+
+We will modify our gradient descent function to separate out θ0 from the rest of the parameters because we do not want to penalize θ0.
+
+> Repeat{
+> 
+> <img src="https://latex.codecogs.com/gif.latex?\theta_0:=\theta_0-\frac{\alpha}{m}\sum_{i=1}^m(h_\theta(x^{(i)})-y^{(i)})x_0^{(i)}" />
+>
+> <img src="https://latex.codecogs.com/gif.latex?\theta_j:=\theta_j-\alpha[\frac{1}{m}\sum_{i=1}^m(h_\theta(x^{(i)})-y^{(i)})x_j^{(i)}&plus;\frac{\lambda}{m}\theta_j]\:&space;\:&space;j\in&space;\left&space;\{1,2...n&space;\right&space;\}"  />
+> 
+> }
+
+The term λmθj performs our regularization. With some manipulation our update rule can also be represented as:
+
+θj:=θj(1−αλm)−α1m∑mi=1(hθ(x(i))−y(i))x(i)j
+The first term in the above equation, 1−αλm will always be less than 1. Intuitively you can see it as reducing the value of θj by some amount on every update. Notice that the second term is now exactly the same as it was before.
+
+Normal Equation
+
+Now let's approach regularization using the alternate method of the non-iterative normal equation.
+
+To add in regularization, the equation is the same as our original, except that we add another term inside the parentheses:
+
+> <img src="https://latex.codecogs.com/gif.latex?\theta=(X^T+{\lambda}\cdot{L})^{-1}X^Ty" />  
+> <p>
+> <img src="https://latex.codecogs.com/gif.latex?where\;L=\begin{bmatrix}&space;0&space;&&space;&&space;&&space;&&space;\\&space;&&space;1&space;&&space;&&space;&&space;\\&space;&&space;&&space;1&space;&&space;&&space;\\&space;&&space;&&space;&&space;...&space;&&space;\\&space;&&space;&&space;&&space;&&space;1&space;\end{bmatrix}" title="where\;L=\begin{bmatrix} 0 & & & & \\ & 1 & & & \\ & & 1 & & \\ & & & ... & \\ & & & & 1 \end{bmatrix}" />
+
+L is a matrix with 0 at the top left and 1's down the diagonal, with 0's everywhere else. It should have dimension (n+1)×(n+1). Intuitively, this is the identity matrix (though we are not including x0), multiplied with a single real number λ.
+
+Recall that if m < n, then XTX is non-invertible. However, when we add the term λ⋅L, then XTX + λ⋅L becomes invertible.
