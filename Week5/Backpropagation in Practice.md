@@ -5,6 +5,7 @@ With neural networks, we are working with sets of matrices:
 <img src="https://latex.codecogs.com/gif.latex?\Theta^{(1)},\Theta^{(2)},\Theta^{(3)},..."/>
 
 <img src="https://latex.codecogs.com/gif.latex?D^{(1)},D^{(2)},D^{(3)},..." />
+
 * * *
 In order to use optimizing functions such as "fminunc()", we will want to "unroll" all the elements and put them into one long vector:
 ```
@@ -23,12 +24,16 @@ To summarize:
 
 ## Gradient Checking
 Gradient checking will assure that our backpropagation works as intended. We can approximate the derivative of our cost function with:
+
 * * *
 <img src="https://latex.codecogs.com/gif.latex?\frac{\partial }{\partial \Theta}J(\Theta)\approx\frac{J(\Theta+\epsilon)-J(\Theta-\epsilon)}{2\epsilon}" /> 
+
 * * *
 With multiple theta matrices, we can approximate the derivative **with respect to <img src="https://latex.codecogs.com/gif.latex?\Theta_j" /> ** as follows:
+
 * * *
 <img src="https://latex.codecogs.com/gif.latex?\frac{\partial}{\partial \Theta}J(\Theta)\approx\frac{J(\Theta_1,...,\Theta_j+\epsilon,...,\Theta_n)-J(\Theta_1,...,\Theta_j-\epsilon,...,\Theta_n)}{2\epsilon}" /> 
+
 * * *
 A small value for **ϵ** (epsilon) such as <img src="https://latex.codecogs.com/gif.latex?\mathbf{\epsilon^{-4}}" />, guarantees that the math works out properly. If the value for **ϵ** is too small, we can end up with numerical problems.
 
@@ -54,6 +59,7 @@ Initializing all theta weights to zero does not work with neural networks. When 
 <img src="https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/y7gaS7pXEeaCrQqTpeD5ng_8868ccda2c387f5d481d0c54ab78a86e_Screen-Shot-2016-12-04-at-11.27.28-AM.png?expiry=1504051200000&amp;hmac=VYp-Mp499X4CL3jtRaTG3BcqyMVhuY9nAcsdHMZ-_fs" alt="" data-asset-id="y7gaS7pXEeaCrQqTpeD5ng">
 
 Hence, we initialize each Θ(l)ij to a random value between[−ϵ,ϵ]. Using the above formula guarantees that we get the desired bound. The same procedure applies to all the Θ's. Below is some working code you could use to experiment.
+
 ```
 If the dimensions of Theta1 is 10x11, Theta2 is 10x11 and Theta3 is 1x11.
 
@@ -61,6 +67,7 @@ Theta1 = rand(10,11) * (2 * INIT_EPSILON) - INIT_EPSILON;
 Theta2 = rand(10,11) * (2 * INIT_EPSILON) - INIT_EPSILON;
 Theta3 = rand(1,11) * (2 * INIT_EPSILON) - INIT_EPSILON;
 ```
+
 rand(x,y) is just a function in octave that will initialize a matrix of random real numbers between 0 and 1.
 
 (Note: the epsilon used above is unrelated to the epsilon from Gradient Checking)
