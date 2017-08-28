@@ -26,13 +26,13 @@ To summarize:
 Gradient checking will assure that our backpropagation works as intended. We can approximate the derivative of our cost function with:
 
 * * *
-<img src="https://latex.codecogs.com/gif.latex?\frac{\partial }{\partial \Theta}J(\Theta)\approx\frac{J(\Theta+\epsilon)-J(\Theta-\epsilon)}{2\epsilon}" /> 
+<img src="https://latex.codecogs.com/gif.latex?\frac{\partial}{\partial\Theta}J(\Theta)\approx\frac{J(\Theta+\epsilon)-J(\Theta-\epsilon)}{2\epsilon}" /> 
 
 * * *
-With multiple theta matrices, we can approximate the derivative **with respect to <img src="https://latex.codecogs.com/gif.latex?\Theta_j" /> ** as follows:
+With multiple theta matrices, we can approximate the derivative **with respect to** <img src="https://latex.codecogs.com/gif.latex?\Theta_j" /> as follows:
 
 * * *
-<img src="https://latex.codecogs.com/gif.latex?\frac{\partial}{\partial \Theta}J(\Theta)\approx\frac{J(\Theta_1,...,\Theta_j+\epsilon,...,\Theta_n)-J(\Theta_1,...,\Theta_j-\epsilon,...,\Theta_n)}{2\epsilon}" /> 
+<img src="https://latex.codecogs.com/gif.latex?\frac{\partial}{\partial\Theta}J(\Theta)\approx\frac{J(\Theta_1,...,\Theta_j+\epsilon,...,\Theta_n)-J(\Theta_1,...,\Theta_j-\epsilon,...,\Theta_n)}{2\epsilon}" /> 
 
 * * *
 A small value for **ϵ** (epsilon) such as <img src="https://latex.codecogs.com/gif.latex?\mathbf{\epsilon^{-4}}" />, guarantees that the math works out properly. If the value for **ϵ** is too small, we can end up with numerical problems.
