@@ -3,6 +3,6 @@ What I have learn in coursera about Machine Learning
 * * *
 2017.9.10  
 Come back!  
-1. finished **exam 4**(in week 5)
-2. 
-3. 
+
+2017.9.27
+Well，I have missed so many classes
